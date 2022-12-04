@@ -54,13 +54,26 @@ local C = {
                 end
 
                 local severity = vim.diagnostic.severity
+                local bufnr_project_map = {}
                 local stats = {}
 
                 for _, d in ipairs(vim.diagnostic.get(nil)) do
                     -- Filter by severity here instead of passing to `get()` to avoid extra iteration.
-                    if d.severity <= severity.WARN and extract_project_name(d.bufnr) == project then
+                    if d.severity > severity.WARN then
+                        goto continue
+                    end
+
+                    -- Cache a project's name.
+                    if bufnr_project_map[d.bufnr] == nil then
+                        bufnr_project_map[d.bufnr] = extract_project_name(d.bufnr) or ""
+                    end
+
+                    -- Filter by a project's name.
+                    if bufnr_project_map[d.bufnr] == project then
                         stats[d.severity] = (stats[d.severity] or 0) + 1
                     end
+
+                    ::continue::
                 end
 
                 return {
