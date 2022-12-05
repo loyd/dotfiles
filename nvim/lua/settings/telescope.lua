@@ -1,4 +1,5 @@
 local telescope = require("telescope")
+local builtin = require("telescope.builtin")
 local nmap = require("helpers.map").nmap
 
 telescope.setup({
@@ -62,7 +63,13 @@ nmap("<leader>*", word_under_cursor)
 
 nmap("<leader>l", ":lua require 'telescope.builtin'.loclist()<CR>")
 nmap("<leader>q", ":lua require 'telescope.builtin'.quickfix()<CR>")
-nmap("<leader>dd", ":lua require 'telescope.builtin'.diagnostics()<CR>")
+nmap("<leader>dd", function()
+    builtin.diagnostics({
+        -- Show diagnostics for the current project only.
+        root_dir = true,
+        severity_limit = vim.diagnostic.severity.WARN,
+    })
+end)
 
 nmap("<leader>gc", ":lua require 'telescope.builtin'.git_bcommits()<CR>")
 nmap("<leader>gC", ":lua require 'telescope.builtin'.git_commits()<CR>")
