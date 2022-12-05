@@ -33,9 +33,9 @@ local function find_files()
     end
     -- Falling back to find_files if git_files can't find a .git directory.
     local opts = { show_untracked = true }
-    local ok = pcall(require("telescope.builtin").git_files, opts)
+    local ok = pcall(builtin.git_files, opts)
     if not ok then
-        require("telescope.builtin").find_files(opts)
+        builtin.find_files(opts)
     end
 end
 
@@ -43,14 +43,14 @@ local function live_grep()
     if bad_cwd() then
         return
     end
-    require("telescope.builtin").live_grep()
+    builtin.live_grep()
 end
 
 local function word_under_cursor()
     if bad_cwd() then
         return
     end
-    require("telescope.builtin").grep_string({ word_match = "-w" })
+    builtin.grep_string({ word_match = "-w" })
 end
 
 -- Key bindings.

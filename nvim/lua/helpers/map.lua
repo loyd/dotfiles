@@ -1,6 +1,12 @@
 local M = {}
 M.funcs = {}
 
+local function get_location(level)
+    local caller = debug.getinfo(level, "Sl")
+    local source = caller.source:match("^.*/lua/(.+)$") or caller.source
+    return source .. ":" .. caller.currentline
+end
+
 local function map(mode, key, action, opts)
     opts = opts or {}
     if opts.noremap == nil then
@@ -11,8 +17,10 @@ local function map(mode, key, action, opts)
     end
 
     if type(action) == "function" then
-        table.insert(M.funcs, action)
-        action = ':lua require "helpers.map".funcs[' .. #M.funcs .. "]()<CR>"
+        -- Use a caller's location to provide more useful info.
+        local loc = get_location(4)
+        M.funcs[loc] = action
+        action = ':lua require "helpers.map".funcs["' .. loc .. '"]()<CR>'
     end
 
     -- TODO: move to `vim.keymap.set`
