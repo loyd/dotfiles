@@ -97,7 +97,7 @@ let g:tex_flavor="latex"
 "               Plugins
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-runtime plugins.vim
+lua require('plugins')
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 "             Indentation
