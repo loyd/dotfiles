@@ -69,6 +69,4 @@ lua require('settings.fidget')
 lua require('settings.incline')
 lua require('settings.rust')
 lua require('settings.leap')
-
-" VimL
-runtime viml/auto-pairs.vim
+lua require('settings.auto-pairs')
