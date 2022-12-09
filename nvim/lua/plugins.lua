@@ -14,6 +14,7 @@ use("nvim-telescope/telescope.nvim")
 use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 use("nvim-telescope/telescope-ui-select.nvim")
 use("b0o/incline.nvim")
+use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
 
 ---- Text
 use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })

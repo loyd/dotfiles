@@ -58,12 +58,6 @@ vim.diagnostic.config({
     },
 })
 
-nmap("<leader>rr", ":RustRunnables<CR>")
-nmap("<leader>rd", ":RustDebuggables<CR>")
-nmap("<leader>rm", ":RustExpandMacro<CR>")
-nmap("<leader>rc", ":RustOpenCargo<CR>")
-nmap("<leader>rp", ":RustParentModule<CR>")
-
 nmap("K", ":lua vim.lsp.buf.hover()<CR>")
 nmap("<leader>sR", ":lua vim.lsp.buf.rename()<CR>")
 -- TODO: signature_help?
@@ -71,10 +65,7 @@ nmap("<leader>sR", ":lua vim.lsp.buf.rename()<CR>")
 nmap("<leader>dn", ":lua vim.diagnostic.goto_next()<CR>")
 nmap("<leader>dp", ":lua vim.diagnostic.goto_prev()<CR>")
 nmap("D", ":lua vim.diagnostic.open_float()<CR>")
-
--- TODO: jump to telescope.
-nmap("<leader>dq", ":lua vim.diagnostic.setqflist()<CR>")
-nmap("<leader>dl", ":lua vim.diagnostic.setloclist()<CR>")
+nmap("<leader>C", ":CodeActionMenu<CR>")
 
 -- TODO: spread on other files? Btw, rust is formatted not by LSP.
 vim.cmd([[autocmd BufWritePre *.lua lua vim.lsp.buf.format({ async = false })]])

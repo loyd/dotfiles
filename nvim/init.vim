@@ -47,9 +47,6 @@ syntax on
 " Make backspace work like other editors.
 set backspace=indent,eol,start
 
-" Improve responsiveness of some plugins (gitgutter, coc).
-set updatetime=100
-
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
