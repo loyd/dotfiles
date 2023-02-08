@@ -63,11 +63,18 @@ nmap("<leader>*", word_under_cursor)
 
 nmap("<leader>l", ":lua require 'telescope.builtin'.loclist()<CR>")
 nmap("<leader>q", ":lua require 'telescope.builtin'.quickfix()<CR>")
-nmap("<leader>dd", function()
+nmap("<leader>dw", function()
     builtin.diagnostics({
         -- Show diagnostics for the current project only.
         root_dir = true,
         severity_limit = vim.diagnostic.severity.WARN,
+    })
+end)
+nmap("<leader>de", function()
+    builtin.diagnostics({
+        -- Show diagnostics for the current project only.
+        root_dir = true,
+        severity_limit = vim.diagnostic.severity.ERROR,
     })
 end)
 
