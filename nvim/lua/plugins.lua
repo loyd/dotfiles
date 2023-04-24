@@ -47,6 +47,7 @@ use("sindrets/diffview.nvim")
 use("j-hui/fidget.nvim")
 use("SmiteshP/nvim-navic")
 use("jose-elias-alvarez/null-ls.nvim")
+use("github/copilot.vim")
 
 ---- Languages
 use("sheerun/vim-polyglot")
@@ -74,3 +75,4 @@ require("settings.fidget")
 require("settings.rust")
 require("settings.leap")
 require("settings.auto-pairs")
+require("settings.copilot")
