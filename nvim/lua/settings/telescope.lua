@@ -1,5 +1,6 @@
 local telescope = require("telescope")
 local builtin = require("telescope.builtin")
+local lga_actions = require("telescope-live-grep-args.actions")
 local nmap = require("helpers.map").nmap
 
 telescope.setup({
@@ -11,8 +12,18 @@ telescope.setup({
             timeout = 750,
         },
     },
+    extensions = {
+        live_grep_args = {
+            mappings = {
+                i = {
+                    ["<C-k>"] = lga_actions.quote_prompt(),
+                },
+            },
+        },
+    },
 })
 
+telescope.load_extension("live_grep_args")
 telescope.load_extension("fzf")
 telescope.load_extension("ui-select")
 
@@ -43,13 +54,14 @@ local function live_grep()
     if bad_cwd() then
         return
     end
-    builtin.live_grep()
+    telescope.extensions.live_grep_args.live_grep_args()
 end
 
 local function word_under_cursor()
     if bad_cwd() then
         return
     end
+    -- TODO: use `live_grep_args_shortcuts.grep_word_under_cursor`?
     builtin.grep_string({ word_match = "-w" })
 end
 

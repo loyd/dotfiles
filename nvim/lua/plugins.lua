@@ -13,6 +13,7 @@ use("kyazdani42/nvim-web-devicons")
 use("nvim-telescope/telescope.nvim")
 use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 use("nvim-telescope/telescope-ui-select.nvim")
+use("nvim-telescope/telescope-live-grep-args.nvim")
 use("b0o/incline.nvim")
 use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
 
