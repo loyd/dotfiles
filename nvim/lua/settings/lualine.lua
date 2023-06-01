@@ -43,6 +43,7 @@ local C = {
         "diagnostics",
         sources = { "nvim_diagnostic" },
         sections = { "error", "warn", "info" },
+        symbols = { error = " ", warn = " ", hint = " ", info = " " },
     },
     diagnostics_project = {
         "diagnostics",
@@ -83,6 +84,7 @@ local C = {
             end,
         },
         sections = { "error", "warn" },
+        symbols = { error = " ", warn = " ", hint = " ", info = " " },
     },
 }
 
