@@ -66,39 +66,39 @@ local function word_under_cursor()
 end
 
 -- Key bindings.
-nmap("<leader>R", ":lua require 'telescope.builtin'.resume()<CR>")
+nmap("<leader>R", builtin.resume, "Resume the last list picker")
+nmap("<leader>K", builtin.keymaps, "List keymaps")
 
-nmap("<leader>f", find_files)
-nmap("<leader>/", live_grep)
-nmap("<leader>*", word_under_cursor)
+nmap("<leader>f", find_files, "List files")
+nmap("<leader>/", live_grep, "List lines filtered by live grep")
+nmap("<leader>*", word_under_cursor, "List lines filtered by the word under the cursor")
 -- TODO: vmap("<leader>*", selection)
 
-nmap("<leader>l", ":lua require 'telescope.builtin'.loclist()<CR>")
-nmap("<leader>q", ":lua require 'telescope.builtin'.quickfix()<CR>")
+nmap("<leader>l", builtin.loclist, "List the loclist")
+nmap("<leader>q", builtin.quickfix, "List the quickfix")
 nmap("<leader>dw", function()
     builtin.diagnostics({
         -- Show diagnostics for the current project only.
         root_dir = true,
         severity_limit = vim.diagnostic.severity.WARN,
     })
-end)
+end, "List diagnostics with severity WARN and ERROR")
 nmap("<leader>de", function()
     builtin.diagnostics({
         -- Show diagnostics for the current project only.
         root_dir = true,
         severity_limit = vim.diagnostic.severity.ERROR,
     })
-end)
+end, "List diagnostics with severity ERROR")
 
-nmap("<leader>gc", ":lua require 'telescope.builtin'.git_bcommits()<CR>")
-nmap("<leader>gC", ":lua require 'telescope.builtin'.git_commits()<CR>")
-nmap("<leader>gb", ":lua require 'telescope.builtin'.git_branches()<CR>")
-nmap("<leader>gs", ":lua require 'telescope.builtin'.git_status()<CR>")
+nmap("<leader>gc", builtin.git_bcommits, "List commits for the current buffer")
+nmap("<leader>gC", builtin.git_commits, "List commits for the current project")
+nmap("<leader>gb", builtin.git_branches, "List branches for the current project")
+nmap("<leader>gs", builtin.git_status, "List status for the current project")
 
-nmap("<leader>sr", ":lua require 'telescope.builtin'.lsp_references()<CR>")
-nmap("<leader>ss", ":lua require 'telescope.builtin'.lsp_document_symbols()<CR>")
-nmap("<leader>sS", ":lua require 'telescope.builtin'.lsp_workspace_symbols()<CR>")
-nmap("<leader>sa", ":lua require 'telescope.builtin'.lsp_code_actions()<CR>")
-nmap("<leader>si", ":lua require 'telescope.builtin'.lsp_implementations()<CR>")
-nmap("<leader>sd", ":lua require 'telescope.builtin'.lsp_definitions()<CR>")
-nmap("<leader>st", ":lua require 'telescope.builtin'.lsp_type_definitions()<CR>")
+nmap("<leader>sr", builtin.lsp_references, "List references for the symbol under the cursor")
+nmap("<leader>ss", builtin.lsp_document_symbols, "List symbols for the current buffer")
+nmap("<leader>sS", builtin.lsp_workspace_symbols, "List symbols for the current project")
+nmap("<leader>si", builtin.lsp_implementations, "List implementations for the symbol under the cursor")
+nmap("<leader>sd", builtin.lsp_definitions, "List definitions for the symbol under the cursor")
+nmap("<leader>st", builtin.lsp_type_definitions, "List type definitions for the symbol under the cursor")

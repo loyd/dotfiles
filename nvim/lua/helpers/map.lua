@@ -7,26 +7,21 @@ local function get_location(level)
     return source .. ":" .. caller.currentline
 end
 
-local function map(mode, key, action, opts)
+local function map(mode, key, action, desc, opts)
     opts = opts or {}
-    if opts.noremap == nil then
-        opts.noremap = true
-    end
+    opts.desc = desc .. " (" .. get_location(4) .. ")"
+
     if opts.silent == nil then
         opts.silent = true
     end
 
-    if type(action) == "function" then
-        -- Use a caller's location to provide more useful info.
-        local loc = get_location(4)
-        M.funcs[loc] = action
-        action = ':lua require "helpers.map".funcs["' .. loc .. '"]()<CR>'
-    end
-
-    -- TODO: move to `vim.keymap.set`
-    vim.api.nvim_set_keymap(mode, key, action, opts)
+    vim.keymap.set(mode, key, action, opts)
 end
 
+M.map = function(...)
+    -- Wrap into a function to have `get_location` consistent.
+    map(...)
+end
 M.nmap = function(...)
     map("n", ...)
 end

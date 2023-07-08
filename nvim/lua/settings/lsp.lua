@@ -58,14 +58,14 @@ vim.diagnostic.config({
     },
 })
 
-nmap("K", ":lua vim.lsp.buf.hover()<CR>")
-nmap("<leader>sR", ":lua vim.lsp.buf.rename()<CR>")
+nmap("K", vim.lsp.buf.hover, "Show hover information about the symbol under the cursor")
+nmap("<leader>sR", vim.lsp.buf.rename, "Rename the symbol under the cursor")
 -- TODO: signature_help?
 
-nmap("<leader>dn", ":lua vim.diagnostic.goto_next()<CR>")
-nmap("<leader>dp", ":lua vim.diagnostic.goto_prev()<CR>")
-nmap("D", ":lua vim.diagnostic.open_float()<CR>")
-nmap("<leader>C", ":CodeActionMenu<CR>")
+nmap("<leader>dn", vim.diagnostic.goto_next, "Jump to the next diagnostic")
+nmap("<leader>dp", vim.diagnostic.goto_prev, "Jump to the previous diagnostic")
+nmap("D", vim.diagnostic.open_float, "Preview the diagnostic under the cursor")
+nmap("<leader>C", ":CodeActionMenu<CR>", "Show code actions for the symbol under the cursor")
 
 -- TODO: spread on other files? Btw, rust is formatted not by LSP.
 vim.cmd([[autocmd BufWritePre *.lua lua vim.lsp.buf.format({ async = false })]])

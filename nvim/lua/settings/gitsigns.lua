@@ -1,33 +1,24 @@
+local gitsigns = require("gitsigns")
+local map = require("helpers.map").map
 local nmap = require("helpers.map").nmap
-local vmap = require("helpers.map").vmap
-local omap = require("helpers.map").omap
-local xmap = require("helpers.map").xmap
 
-require("gitsigns").setup({
-    -- TODO: integrations
+-- TODO: integrations
+gitsigns.setup({})
 
-    on_attach = function(_bufnr)
-        -- Navigation
-        nmap("]c", "&diff ? ']c' : '<cmd>Gitsigns next_hunk<CR>'", { expr = true })
-        nmap("[c", "&diff ? '[c' : '<cmd>Gitsigns prev_hunk<CR>'", { expr = true })
+-- Actions
+nmap("<leader>hn", gitsigns.next_hunk, "Jump to the next hunk")
+nmap("<leader>hp", gitsigns.prev_hunk, "Jump to the previous hunk")
+map({ "n", "v" }, "<leader>hs", gitsigns.stage_hunk, "Stage the hunk at the cursor")
+map({ "n", "v" }, "<leader>hr", gitsigns.reset_hunk, "Reset the hunk at the cursor")
+nmap("<leader>hS", gitsigns.stage_buffer, "Stage the whole buffer")
+nmap("<leader>hu", gitsigns.undo_stage_hunk, "Undo the last hunk staging")
+nmap("<leader>hR", gitsigns.reset_buffer, "Reset the whole buffer")
+nmap("<leader>ph", gitsigns.preview_hunk, "Preview the hunk at the cursor")
+nmap("<leader>pb", function()
+    gitsigns.blame_line({ full = true })
+end, "Preview the git blame for the current line")
+nmap("<leader>tb", gitsigns.toggle_current_line_blame, "Toggle the git blame for the current line")
+nmap("<leader>td", gitsigns.toggle_deleted, "Toggle the deleted lines")
 
-        -- Actions
-        nmap("<leader>hs", ":Gitsigns stage_hunk<CR>")
-        vmap("<leader>hs", ":Gitsigns stage_hunk<CR>")
-        nmap("<leader>hr", ":Gitsigns reset_hunk<CR>")
-        vmap("<leader>hr", ":Gitsigns reset_hunk<CR>")
-        nmap("<leader>hS", "<cmd>Gitsigns stage_buffer<CR>")
-        nmap("<leader>hu", "<cmd>Gitsigns undo_stage_hunk<CR>")
-        nmap("<leader>hR", "<cmd>Gitsigns reset_buffer<CR>")
-        nmap("<leader>hp", "<cmd>Gitsigns preview_hunk<CR>")
-        nmap("<leader>hb", "<cmd>lua require 'gitsigns'.blame_line {full = true}<CR>")
-        nmap("<leader>tb", "<cmd>Gitsigns toggle_current_line_blame<CR>")
-        nmap("<leader>hd", "<cmd>Gitsigns diffthis<CR>")
-        nmap("<leader>hD", "<cmd>lua require 'gitsigns'.diffthis('~')<CR>")
-        nmap("<leader>td", "<cmd>Gitsigns toggle_deleted<CR>")
-
-        -- Text object
-        omap("ih", ":<C-U>Gitsigns select_hunk<CR>")
-        xmap("ih", ":<C-U>Gitsigns select_hunk<CR>")
-    end,
-})
+-- Text object
+map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "Select the current hunk")
