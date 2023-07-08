@@ -16,6 +16,7 @@ use("nvim-telescope/telescope-ui-select.nvim")
 use("nvim-telescope/telescope-live-grep-args.nvim")
 use("b0o/incline.nvim")
 use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
+use("rmagatti/goto-preview")
 
 ---- Text
 use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -77,3 +78,4 @@ require("settings.rust")
 require("settings.leap")
 require("settings.auto-pairs")
 require("settings.copilot")
+require("settings.goto-preview")
