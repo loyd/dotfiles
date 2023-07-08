@@ -5,4 +5,4 @@ require("project_nvim").setup({
 })
 
 require("telescope").load_extension("projects")
-nmap("<leader>p", ":Telescope projects<CR>")
+nmap("<leader>P", ":Telescope projects<CR>")
