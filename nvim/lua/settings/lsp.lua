@@ -1,4 +1,3 @@
-local navic = require("nvim-navic")
 local nmap = require("helpers.map").nmap
 
 -- https://github.com/simrat39/rust-tools.nvim/issues/196
@@ -6,9 +5,6 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 require("rust-tools").setup({
     server = {
-        on_attach = function(client, bufnr)
-            navic.attach(client, bufnr)
-        end,
         capabilities = capabilities,
         settings = {
             ["rust-analyzer"] = {
