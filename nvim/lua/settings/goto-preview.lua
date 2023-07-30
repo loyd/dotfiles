@@ -1,7 +1,9 @@
 local goto_preview = require("goto-preview")
 local nmap = require("helpers.map").nmap
 
-goto_preview.setup({})
+goto_preview.setup({
+    preview_window_title = { enable = true, position = "right" },
+})
 
 nmap("<leader>pd", goto_preview.goto_preview_definition, "Preview LSP definition")
 nmap("<leader>pt", goto_preview.goto_preview_type_definition, "Preview LSP type definition")
