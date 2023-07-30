@@ -67,23 +67,23 @@ end
 
 -- Key bindings.
 nmap("<leader>R", builtin.resume, "Resume the last list picker")
-nmap("<leader>K", builtin.keymaps, "List keymaps")
+nmap("<leader>lk", builtin.keymaps, "List keymaps")
 
 nmap("<leader>f", find_files, "List files")
 nmap("<leader>/", live_grep, "List lines filtered by live grep")
 nmap("<leader>*", word_under_cursor, "List lines filtered by the word under the cursor")
 -- TODO: vmap("<leader>*", selection)
 
-nmap("<leader>l", builtin.loclist, "List the loclist")
-nmap("<leader>q", builtin.quickfix, "List the quickfix")
-nmap("<leader>dw", function()
+nmap("<leader>ll", builtin.loclist, "List the loclist")
+nmap("<leader>lq", builtin.quickfix, "List the quickfix")
+nmap("<leader>lw", function()
     builtin.diagnostics({
         -- Show diagnostics for the current project only.
         root_dir = true,
         severity_limit = vim.diagnostic.severity.WARN,
     })
 end, "List diagnostics with severity WARN and ERROR")
-nmap("<leader>de", function()
+nmap("<leader>le", function()
     builtin.diagnostics({
         -- Show diagnostics for the current project only.
         root_dir = true,
@@ -91,14 +91,14 @@ nmap("<leader>de", function()
     })
 end, "List diagnostics with severity ERROR")
 
-nmap("<leader>gc", builtin.git_bcommits, "List commits for the current buffer")
-nmap("<leader>gC", builtin.git_commits, "List commits for the current project")
-nmap("<leader>gb", builtin.git_branches, "List branches for the current project")
-nmap("<leader>gs", builtin.git_status, "List status for the current project")
+nmap("<leader>lc", builtin.git_bcommits, "List commits for the current buffer")
+nmap("<leader>lC", builtin.git_commits, "List commits for the current project")
+nmap("<leader>lb", builtin.git_branches, "List branches for the current project")
+nmap("<leader>ls", builtin.git_status, "List status for the current project")
 
-nmap("<leader>sr", builtin.lsp_references, "List references for the symbol under the cursor")
-nmap("<leader>ss", builtin.lsp_document_symbols, "List symbols for the current buffer")
-nmap("<leader>sS", builtin.lsp_workspace_symbols, "List symbols for the current project")
-nmap("<leader>si", builtin.lsp_implementations, "List implementations for the symbol under the cursor")
-nmap("<leader>sd", builtin.lsp_definitions, "List definitions for the symbol under the cursor")
-nmap("<leader>st", builtin.lsp_type_definitions, "List type definitions for the symbol under the cursor")
+nmap("<leader>lr", builtin.lsp_references, "List references for the symbol under the cursor")
+nmap("<leader>ls", builtin.lsp_document_symbols, "List symbols for the current buffer")
+nmap("<leader>lS", builtin.lsp_workspace_symbols, "List symbols for the current project")
+nmap("<leader>li", builtin.lsp_implementations, "List implementations for the symbol under the cursor")
+nmap("<leader>ld", builtin.lsp_definitions, "List definitions for the symbol under the cursor")
+nmap("<leader>lt", builtin.lsp_type_definitions, "List type definitions for the symbol under the cursor")
