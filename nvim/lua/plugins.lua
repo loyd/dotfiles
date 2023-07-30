@@ -59,6 +59,7 @@ use("ron-rs/ron.vim")
 use("natecraddock/sessions.nvim")
 
 ---- Settings
+require("settings._general")
 require("settings.treesitter")
 require("settings.lualine")
 require("settings.telescope")
