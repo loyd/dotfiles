@@ -4,7 +4,7 @@ env:
 window:
   padding:
     y: 5
-  opacity: 0.8
+  opacity: 0.95
 
 font:
   normal:
