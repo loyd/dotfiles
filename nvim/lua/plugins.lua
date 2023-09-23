@@ -16,6 +16,7 @@ use("nvim-telescope/telescope-ui-select.nvim")
 use("nvim-telescope/telescope-live-grep-args.nvim")
 use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
 use("rmagatti/goto-preview")
+use("caenrique/swap-buffers.nvim")
 
 ---- Text
 use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
