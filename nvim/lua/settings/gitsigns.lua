@@ -1,6 +1,7 @@
 local gitsigns = require("gitsigns")
 local map = require("helpers.map").map
 local nmap = require("helpers.map").nmap
+local partial = require("helpers.func").partial
 
 -- TODO: integrations
 gitsigns.setup({})
@@ -14,9 +15,7 @@ nmap("<leader>hS", gitsigns.stage_buffer, "Stage the whole buffer")
 nmap("<leader>hu", gitsigns.undo_stage_hunk, "Undo the last hunk staging")
 nmap("<leader>hR", gitsigns.reset_buffer, "Reset the whole buffer")
 nmap("<leader>ph", gitsigns.preview_hunk, "Preview the hunk at the cursor")
-nmap("<leader>pb", function()
-    gitsigns.blame_line({ full = true })
-end, "Preview the git blame for the current line")
+nmap("<leader>pb", partial(gitsigns.blame_line, { full = true }), "Preview the git blame for the current line")
 nmap("<leader>tb", gitsigns.toggle_current_line_blame, "Toggle the git blame for the current line")
 nmap("<leader>td", gitsigns.toggle_deleted, "Toggle the deleted lines")
 

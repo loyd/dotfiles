@@ -3,7 +3,7 @@ local M = {}
 local WORKSPACE_DIR = "/home/workspace"
 
 -- Pattern: `<workspace>/<scope>/<project>`
-M.extract_project_name = function(bufnr)
+function M.extract_project_name(bufnr)
     local path = vim.api.nvim_buf_get_name(bufnr)
 
     local p = path:match("^diffview://(.+)")

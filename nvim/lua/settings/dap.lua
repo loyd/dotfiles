@@ -2,19 +2,14 @@ local dap = require("dap")
 local dapui = require("dapui")
 local nmap = require("helpers.map").nmap
 local vmap = require("helpers.map").vmap
+local thunk = require("helpers.func").thunk
 
 dapui.setup()
 
 -- Open and close the windows automatically.
-dap.listeners.after.event_initialized.dapui_config = function()
-    dapui.open()
-end
-dap.listeners.before.event_terminated.dapui_config = function()
-    dapui.close()
-end
-dap.listeners.before.event_exited.dapui_config = function()
-    dapui.close()
-end
+dap.listeners.after.event_initialized.dapui_config = thunk(dapui.open)
+dap.listeners.before.event_terminated.dapui_config = thunk(dapui.close)
+dap.listeners.before.event_exited.dapui_config = thunk(dapui.close)
 
 -- Key mappings.
 nmap("<F5>", dap.continue, "Debugger: continue")

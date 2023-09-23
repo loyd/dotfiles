@@ -2,6 +2,7 @@ local telescope = require("telescope")
 local builtin = require("telescope.builtin")
 local lga_actions = require("telescope-live-grep-args.actions")
 local nmap = require("helpers.map").nmap
+local partial = require("helpers.func").partial
 
 telescope.setup({
     defaults = {
@@ -76,20 +77,24 @@ nmap("<leader>*", word_under_cursor, "List lines filtered by the word under the 
 
 nmap("<leader>ll", builtin.loclist, "List the loclist")
 nmap("<leader>lq", builtin.quickfix, "List the quickfix")
-nmap("<leader>lw", function()
-    builtin.diagnostics({
+nmap(
+    "<leader>lw",
+    partial(builtin.diagnostics, {
         -- Show diagnostics for the current project only.
         root_dir = true,
         severity_limit = vim.diagnostic.severity.WARN,
-    })
-end, "List diagnostics with severity WARN and ERROR")
-nmap("<leader>le", function()
-    builtin.diagnostics({
+    }),
+    "List diagnostics with severity WARN and ERROR"
+)
+nmap(
+    "<leader>le",
+    partial(builtin.diagnostics, {
         -- Show diagnostics for the current project only.
         root_dir = true,
         severity_limit = vim.diagnostic.severity.ERROR,
-    })
-end, "List diagnostics with severity ERROR")
+    }),
+    "List diagnostics with severity ERROR"
+)
 
 nmap("<leader>lc", builtin.git_bcommits, "List commits for the current buffer")
 nmap("<leader>lC", builtin.git_commits, "List commits for the current project")
