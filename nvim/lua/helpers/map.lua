@@ -31,6 +31,9 @@ end
 M.imap = function(...)
     map("i", ...)
 end
+M.cmap = function(...)
+    map("c", ...)
+end
 M.omap = function(...)
     map("o", ...)
 end
