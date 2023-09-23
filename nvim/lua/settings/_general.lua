@@ -166,7 +166,7 @@ vim.opt.diffopt:append({ "algorithm:patience", "indent-heuristic" })
 vim.opt.fillchars:append("diff:╱")
 
 ----------------------------------------
---            File specific
+--            File Specific
 ----------------------------------------
 
 vim.api.nvim_create_autocmd("FileType", {
@@ -174,7 +174,7 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function()
         vim.opt_local.wrap = true
         vim.opt_local.spell = true
-        vim.opt_local.colorcolumn = 0
+        vim.opt_local.colorcolumn = "0"
     end,
 })
 
