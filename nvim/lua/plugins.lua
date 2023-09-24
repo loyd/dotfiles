@@ -3,6 +3,8 @@ local use = packer.use
 
 packer.init()
 
+use("wbthomason/packer.nvim")
+
 ---- Common deps
 use("nvim-lua/plenary.nvim")
 
