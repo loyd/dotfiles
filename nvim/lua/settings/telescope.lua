@@ -99,7 +99,6 @@ nmap(
 nmap("<leader>lc", builtin.git_bcommits, "List commits for the current buffer")
 nmap("<leader>lC", builtin.git_commits, "List commits for the current project")
 nmap("<leader>lb", builtin.git_branches, "List branches for the current project")
-nmap("<leader>ls", builtin.git_status, "List status for the current project")
 
 nmap("<leader>lr", builtin.lsp_references, "List references for the symbol under the cursor")
 nmap("<leader>ls", builtin.lsp_document_symbols, "List symbols for the current buffer")
