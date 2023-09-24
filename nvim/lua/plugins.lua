@@ -9,7 +9,7 @@ use("nvim-lua/plenary.nvim")
 ---- Interface
 use("nvim-lualine/lualine.nvim")
 use({ "gruvbox-material/vim", as = "gruvbox-material" })
-use("kyazdani42/nvim-web-devicons")
+use("nvim-tree/nvim-web-devicons")
 use("nvim-telescope/telescope.nvim")
 use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
 use("nvim-telescope/telescope-ui-select.nvim")
@@ -17,6 +17,7 @@ use("nvim-telescope/telescope-live-grep-args.nvim")
 use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
 use("rmagatti/goto-preview")
 use("caenrique/swap-buffers.nvim")
+use("nvim-tree/nvim-tree.lua")
 
 ---- Text
 use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })

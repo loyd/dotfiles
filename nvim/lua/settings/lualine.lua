@@ -1,4 +1,5 @@
 local lualine = require("lualine")
+local symbols = require("settings._symbols")
 local extract_project_name = require("helpers.project").extract_project_name
 
 local C = {
@@ -43,7 +44,7 @@ local C = {
         "diagnostics",
         sources = { "nvim_diagnostic" },
         sections = { "error", "warn", "info" },
-        symbols = { error = " ", warn = " ", hint = " ", info = " " },
+        symbols = symbols.diagnostics,
     },
     diagnostics_project = {
         "diagnostics",
@@ -84,7 +85,7 @@ local C = {
             end,
         },
         sections = { "error", "warn" },
-        symbols = { error = " ", warn = " ", hint = " ", info = " " },
+        symbols = symbols.diagnostics,
     },
 }
 

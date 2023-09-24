@@ -1,4 +1,5 @@
 local nmap = require("helpers.map").nmap
+local symbols = require("settings._symbols")
 
 -- https://github.com/simrat39/rust-tools.nvim/issues/196
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -34,7 +35,9 @@ null_ls.setup({
 })
 
 -- Icons instead of letters.
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+local sym = symbols.diagnostics
+local signs = { Error = sym.error, Warn = sym.warn, Info = sym.info, Hint = sym.hint }
+
 for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
