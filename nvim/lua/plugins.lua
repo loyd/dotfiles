@@ -14,12 +14,12 @@ use({ "gruvbox-material/vim", as = "gruvbox-material" })
 use("nvim-tree/nvim-web-devicons")
 use("nvim-telescope/telescope.nvim")
 use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
-use("nvim-telescope/telescope-ui-select.nvim")
 use("nvim-telescope/telescope-live-grep-args.nvim")
 use({ "weilbith/nvim-code-action-menu", cmd = "CodeActionMenu" })
 use("rmagatti/goto-preview")
 use("caenrique/swap-buffers.nvim")
 use("nvim-tree/nvim-tree.lua")
+use({ "stevearc/dressing.nvim" })
 
 ---- Text
 use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
