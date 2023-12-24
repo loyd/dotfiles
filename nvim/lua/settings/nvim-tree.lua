@@ -1,4 +1,5 @@
 local thunk = require("helpers.func").thunk
+local nmap = require("helpers.map").nmap
 local symbols = require("settings._symbols")
 local nt_api = require("nvim-tree.api")
 
@@ -45,3 +46,6 @@ require("nvim-tree").setup({
 
 -- Start nvim-tree in new tabs.
 vim.api.nvim_create_autocmd({ "TabNewEntered" }, { callback = thunk(nt_api.tree.open) })
+
+nmap("<leader>tt", ":NvimTreeToggle<CR>", "Toggle the file tree")
+nmap("<leader>F", ":NvimTreeFocus<CR>", "Focus the file tree")
