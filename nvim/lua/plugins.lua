@@ -1,3 +1,5 @@
+--# selene: allow(mixed_table)
+
 local packer = require("packer")
 local use = packer.use
 
@@ -20,6 +22,7 @@ use("rmagatti/goto-preview")
 use("caenrique/swap-buffers.nvim")
 use("nvim-tree/nvim-tree.lua")
 use({ "stevearc/dressing.nvim" })
+use({ "folke/noice.nvim", requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" } })
 
 ---- Text
 use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -49,7 +52,6 @@ use("hrsh7th/cmp-cmdline")
 use("hrsh7th/cmp-vsnip")
 use("editorconfig/editorconfig-vim")
 use("sindrets/diffview.nvim")
-use({ "j-hui/fidget.nvim", tag = "legacy" })
 use("jose-elias-alvarez/null-ls.nvim")
 use("github/copilot.vim")
 

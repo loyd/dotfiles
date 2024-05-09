@@ -21,8 +21,11 @@ vim.opt.wildignore:append({ ".git", ".hg", ".svn", "*.o", "*.aux", "*.png", "*.j
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
 --vim.opt.showmode = false
 
--- Don't pass messages to |ins-completion-menu|.
-vim.opt.shortmess:append("c")
+vim.opt.shortmess:append({
+    I = true, -- the intro message
+    s = true, -- "search hit BOTTOM, continuing at TOP"
+    c = true, -- ins-completion-menu
+})
 
 vim.g.tex_flavor = "latex"
 
