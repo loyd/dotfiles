@@ -1,31 +1,6 @@
 local nmap = require("helpers.map").nmap
 local symbols = require("settings._symbols")
 
--- https://github.com/simrat39/rust-tools.nvim/issues/196
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-require("rust-tools").setup({
-    server = {
-        capabilities = capabilities,
-        settings = {
-            ["rust-analyzer"] = {
-                cargo = {
-                    features = "all",
-                },
-                checkOnSave = {
-                    command = "clippy",
-                },
-                imports = {
-                    granularity = {
-                        group = "crate",
-                        -- prefix = "crate",
-                    },
-                },
-            },
-        },
-    },
-})
-
 local null_ls = require("null-ls")
 null_ls.setup({
     sources = {
@@ -66,5 +41,12 @@ nmap("<leader>dp", vim.diagnostic.goto_prev, "Jump to the previous diagnostic")
 nmap("D", vim.diagnostic.open_float, "Preview the diagnostic under the cursor")
 nmap("<leader>C", ":CodeActionMenu<CR>", "Show code actions for the symbol under the cursor")
 
--- TODO: spread on other files? Btw, rust is formatted not by LSP.
+---- Formatting on save
+
+-- Lua
+-- TODO: spread on other files
 vim.cmd([[autocmd BufWritePre *.lua lua vim.lsp.buf.format({ async = false })]])
+
+-- Rust (actually, it's used by polyglot, not LSP)
+vim.g.rustfmt_command = "rustfmt +nightly"
+vim.g.rustfmt_autosave = 1
