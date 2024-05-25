@@ -39,7 +39,6 @@ nmap("<leader>sR", vim.lsp.buf.rename, "Rename the symbol under the cursor")
 nmap("<leader>dn", vim.diagnostic.goto_next, "Jump to the next diagnostic")
 nmap("<leader>dp", vim.diagnostic.goto_prev, "Jump to the previous diagnostic")
 nmap("D", vim.diagnostic.open_float, "Preview the diagnostic under the cursor")
-nmap("<leader>C", ":CodeActionMenu<CR>", "Show code actions for the symbol under the cursor")
 
 ---- Formatting on save
 
