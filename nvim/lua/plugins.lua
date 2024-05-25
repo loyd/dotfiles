@@ -10,7 +10,7 @@ use("nvim-lua/plenary.nvim")
 
 ---- Interface
 use("nvim-lualine/lualine.nvim")
-use({ "gruvbox-material/vim", as = "gruvbox-material" })
+use({ "sainnhe/gruvbox-material", as = "gruvbox-material" })
 use("nvim-tree/nvim-web-devicons")
 use("nvim-telescope/telescope.nvim")
 use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
