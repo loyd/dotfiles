@@ -2,6 +2,7 @@ local nmap = require("helpers.map").nmap
 local vmap = require("helpers.map").vmap
 local imap = require("helpers.map").imap
 local cmap = require("helpers.map").cmap
+local augroup = require("helpers.augroup")
 local extract_project_name = require("helpers.project").extract_project_name
 
 ----------------------------------------
@@ -120,10 +121,9 @@ nmap("_", "3<C-w><", "Resize window: reduce width")
 nmap("+", "3<C-w>>", "Resize window: increase width")
 
 -- Resize windows to become equal when the host window is resized.
-vim.api.nvim_create_autocmd("VimResized", {
-    pattern = "*",
-    command = "wincmd =",
-})
+augroup("HostWindowResized", function(autocmd)
+    autocmd("VimResized", {}, "wincmd =")
+end)
 
 ----------------------------------------
 --               Search
@@ -171,43 +171,35 @@ vim.opt.diffopt:append({ "algorithm:patience", "indent-heuristic" })
 vim.opt.fillchars:append("diff:╱")
 
 ----------------------------------------
---            File Specific
+--          Filetype Specific
 ----------------------------------------
 
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "tex", "markdown" },
-    callback = function()
+augroup("FileTypeSpecific", function(autocmd)
+    autocmd("FileType", { pattern = { "tex", "markdown" } }, function()
         vim.opt_local.wrap = true
         vim.opt_local.spell = true
         vim.opt_local.colorcolumn = "0"
-    end,
-})
+    end)
 
-local function filetype(pattern, ft)
-    vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-        pattern = pattern,
-        callback = function()
-            vim.opt_local.filetype = ft
-        end,
-    })
-end
+    local function filetype(pattern, ft)
+        autocmd({ "BufRead", "BufNewFile" }, { pattern = pattern }, "set filetype=" .. ft)
+    end
 
--- For ansible.
-filetype("*.toml.j2", "toml")
-filetype("*.ini.j2", "toml")
-filetype("*.sh.j2", "bash")
-filetype({ "*.yml.j2", "*.yaml.j2" }, "yaml")
+    -- Jinja.
+    -- TODO: use `vim.filetype.add` instead.
+    filetype("*.toml.j2", "toml")
+    filetype("*.ini.j2", "toml")
+    filetype("*.sh.j2", "bash")
+    filetype({ "*.yml.j2", "*.yaml.j2" }, "yaml")
+end)
 
 ----------------------------------------
 --            Tab Names
 ----------------------------------------
 
 -- Set a tab's name to a project's name of an active buffer.
-local augroup = vim.api.nvim_create_augroup("tabname-setter", { clear = true })
-vim.api.nvim_create_autocmd({ "BufWinEnter", "BufEnter", "WinEnter" }, {
-    group = augroup,
-    pattern = "*",
-    callback = function()
+augroup("ProjectTabname", function(autocmd)
+    autocmd({ "BufWinEnter", "BufEnter", "WinEnter" }, {}, function()
         -- TODO: check all buffers in the window. How is `nvim_list_bufs` expensive?
         for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
             local winnr = vim.api.nvim_tabpage_get_win(tab)
@@ -222,5 +214,5 @@ vim.api.nvim_create_autocmd({ "BufWinEnter", "BufEnter", "WinEnter" }, {
                 end)
             end
         end
-    end,
-})
+    end)
+end)
