@@ -1,9 +1,12 @@
 local cmp = require("cmp")
 
+-- TODO: actualize config
+-- TODO: icons
+
 cmp.setup({
     snippet = {
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
+            vim.snippet.expand(args.body)
         end,
     },
     mapping = {

@@ -1,5 +1,3 @@
---# selene: allow(mixed_table)
-
 local packer = require("packer")
 local use = packer.use
 
@@ -27,20 +25,18 @@ use({ "folke/noice.nvim", requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-no
 ---- Text
 use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 use("ciaranm/detectindent")
-use("scrooloose/nerdcommenter")
 use("terryma/vim-multiple-cursors")
 use("LunarWatcher/auto-pairs")
 use("machakann/vim-highlightedyank")
 use("rrethy/vim-illuminate")
-use("hrsh7th/vim-vsnip") -- TODO: remove snippets at all
 use("ggandor/leap.nvim")
 
 ---- Integrations
 use("lewis6991/gitsigns.nvim")
 use("rhysd/git-messenger.vim")
 use("ahmedkhalf/project.nvim")
-use("neovim/nvim-lspconfig")
-use("simrat39/rust-tools.nvim")
+use("neovim/nvim-lspconfig") -- TODO: remove (rustaceanvim)
+use("simrat39/rust-tools.nvim") -- TODO: replace with rustaceanvim
 use("mfussenegger/nvim-dap")
 use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } })
 use({ "saecki/crates.nvim", tag = "v0.3.0" })
@@ -49,7 +45,6 @@ use("hrsh7th/cmp-nvim-lsp")
 use("hrsh7th/cmp-path")
 use("hrsh7th/cmp-buffer")
 use("hrsh7th/cmp-cmdline")
-use("hrsh7th/cmp-vsnip")
 use("editorconfig/editorconfig-vim")
 use("sindrets/diffview.nvim")
 use("jose-elias-alvarez/null-ls.nvim")

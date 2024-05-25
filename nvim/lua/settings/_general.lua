@@ -2,6 +2,7 @@ local nmap = require("helpers.map").nmap
 local vmap = require("helpers.map").vmap
 local imap = require("helpers.map").imap
 local cmap = require("helpers.map").cmap
+local extract_project_name = require("helpers.project").extract_project_name
 
 ----------------------------------------
 --               General
@@ -48,9 +49,6 @@ vim.opt.synmaxcol = 900
 vim.opt.signcolumn = "yes"
 
 vim.g.gruvbox_material_current_word = "grey background"
---vim.g.gruvbox_material_enable_bold = 1
---vim.g.gruvbox_material_enable_italic = 1
---vim.g.gruvbox_material_background = "hard"
 
 local function toggle_background()
     if vim.opt.background:get() == "light" then
@@ -199,3 +197,30 @@ filetype("*.toml.j2", "toml")
 filetype("*.ini.j2", "toml")
 filetype("*.sh.j2", "bash")
 filetype({ "*.yml.j2", "*.yaml.j2" }, "yaml")
+
+----------------------------------------
+--            Tab Names
+----------------------------------------
+
+-- Set a tab's name to a project's name of an active buffer.
+local augroup = vim.api.nvim_create_augroup("tabname-setter", { clear = true })
+vim.api.nvim_create_autocmd({ "BufWinEnter", "BufEnter", "WinEnter" }, {
+    group = augroup,
+    pattern = "*",
+    callback = function()
+        -- TODO: check all buffers in the window. How is `nvim_list_bufs` expensive?
+        for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
+            local winnr = vim.api.nvim_tabpage_get_win(tab)
+            local bufnr = vim.api.nvim_win_get_buf(winnr)
+            local project = extract_project_name(bufnr)
+
+            if project then
+                vim.api.nvim_tabpage_set_var(tab, "tabname", project)
+            else
+                pcall(function()
+                    vim.api.nvim_tabpage_del_var(tab, "tabname")
+                end)
+            end
+        end
+    end,
+})

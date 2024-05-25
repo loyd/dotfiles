@@ -56,31 +56,24 @@ local C = {
                 end
 
                 local severity = vim.diagnostic.severity
-                local bufnr_project_map = {}
-                local stats = {}
+                local filter = { severity = { min = severity.WARN } }
+                local bufnr_whitelist = {}
+                local count = {}
 
-                for _, d in ipairs(vim.diagnostic.get(nil)) do
-                    -- Filter by severity here instead of passing to `get()` to avoid extra iteration.
-                    if d.severity > severity.WARN then
-                        goto continue
+                for _, d in ipairs(vim.diagnostic.get(nil, filter)) do
+                    -- Determine whether a buffer belongs to the current project.
+                    if bufnr_whitelist[d.bufnr] == nil then
+                        bufnr_whitelist[d.bufnr] = extract_project_name(d.bufnr) == project
                     end
 
-                    -- Cache a project's name.
-                    if bufnr_project_map[d.bufnr] == nil then
-                        bufnr_project_map[d.bufnr] = extract_project_name(d.bufnr) or ""
+                    if bufnr_whitelist[d.bufnr] then
+                        count[d.severity] = (count[d.severity] or 0) + 1
                     end
-
-                    -- Filter by a project's name.
-                    if bufnr_project_map[d.bufnr] == project then
-                        stats[d.severity] = (stats[d.severity] or 0) + 1
-                    end
-
-                    ::continue::
                 end
 
                 return {
-                    error = stats[severity.ERROR],
-                    warn = stats[severity.WARN],
+                    error = count[severity.ERROR],
+                    warn = count[severity.WARN],
                 }
             end,
         },
@@ -114,27 +107,4 @@ lualine.setup({
     sections = statusline,
     inactive_sections = statusline,
     tabline = tabline,
-})
-
--- Set a tab's name to a project's name of an active buffer.
-local augroup = vim.api.nvim_create_augroup("tabname-setter", { clear = true })
-vim.api.nvim_create_autocmd({ "BufWinEnter", "BufEnter", "WinEnter" }, {
-    group = augroup,
-    pattern = "*",
-    callback = function()
-        -- TODO: check all buffers in the window. How is `nvim_list_bufs` expensive?
-        for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
-            local winnr = vim.api.nvim_tabpage_get_win(tab)
-            local bufnr = vim.api.nvim_win_get_buf(winnr)
-            local project = extract_project_name(bufnr)
-
-            if project then
-                vim.api.nvim_tabpage_set_var(tab, "tabname", project)
-            else
-                pcall(function()
-                    vim.api.nvim_tabpage_del_var(tab, "tabname")
-                end)
-            end
-        end
-    end,
 })
