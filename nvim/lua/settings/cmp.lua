@@ -1,7 +1,5 @@
 local cmp = require("cmp")
-
--- TODO: actualize config
--- TODO: icons
+local lspkind = require("lspkind")
 
 cmp.setup({
     snippet = {
@@ -9,43 +7,44 @@ cmp.setup({
             vim.snippet.expand(args.body)
         end,
     },
-    mapping = {
-        ["<C-n>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-p>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
-        ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
-        ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-        ["<C-y>"] = cmp.config.disable,
-        ["<C-e>"] = cmp.mapping({
-            i = cmp.mapping.abort(),
-            c = cmp.mapping.close(),
-        }),
-        -- TODO: conflict with autopairs.
-        --["<CR>"] = cmp.mapping.confirm({select = false}),
+    -- preset: C-n (next), C-p (prev), C-y (confirm), C-e (abort)
+    mapping = cmp.mapping.preset.insert({
         ["<Tab>"] = cmp.mapping.confirm({ select = false }),
-    },
-    sources = {
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
+    }),
+    sources = cmp.config.sources({
         { name = "nvim_lsp" },
+    }, {
         { name = "buffer" },
         { name = "crates" },
+    }),
+    formatting = {
+        format = lspkind.cmp_format({
+            mode = "symbol",
+            maxwidth = 50,
+            show_labelDetails = true,
+        }),
     },
 })
 
--- Set configuration for specific filetype.
 cmp.setup.filetype("gitcommit", {
-    -- TODO: cmp_git
+    -- TODO: cmp-git?
     sources = { { name = "buffer" } },
 })
 
--- Use buffer source for `/`.
-cmp.setup.cmdline("/", {
+cmp.setup.cmdline({ "/", "?" }, {
+    mapping = cmp.mapping.preset.cmdline(),
     sources = { { name = "buffer" } },
 })
 
--- Use cmdline & path source for ":".
 cmp.setup.cmdline(":", {
-    sources = {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
         { name = "path" },
+    }, {
         { name = "cmdline" },
-    },
+    }),
+    matching = { disallow_symbol_nonprefix_matching = false },
 })
