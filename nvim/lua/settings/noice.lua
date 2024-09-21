@@ -30,4 +30,4 @@ require("noice").setup({
     },
 })
 
-nmap("<leader>lh", ":Noice telescope<CR>", "List message history")
+nmap("<leader>lh", ":Noice fzf<CR>", "List message history")
