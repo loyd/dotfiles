@@ -95,6 +95,7 @@ nmap("<leader>lq", fzf.quickfix, "List the quickfix")
 nmap(
     "<leader>lw",
     partial(fzf.diagnostics_workspace, {
+        cwd_only = true,
         severity_limit = vim.diagnostic.severity.WARN,
     }),
     "List diagnostics with severity WARN and ERROR"
@@ -102,6 +103,7 @@ nmap(
 nmap(
     "<leader>le",
     partial(fzf.diagnostics_workspace, {
+        cwd_only = true,
         severity_only = vim.diagnostic.severity.ERROR,
     }),
     "List diagnostics with severity ERROR"
