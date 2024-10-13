@@ -30,7 +30,7 @@ use("ggandor/leap.nvim")
 
 ---- Integrations
 use("lewis6991/gitsigns.nvim")
-use("rhysd/git-messenger.vim")
+use("lsig/messenger.nvim")
 use("mrcjkb/rustaceanvim")
 use("mfussenegger/nvim-dap")
 use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } })
