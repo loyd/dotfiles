@@ -1,0 +1,86 @@
+@define-color background    #282828;
+@define-color foreground    #d4be98;
+@define-color black         #3c3836;
+@define-color red           #ea6962;
+@define-color green         #a9b665;
+@define-color yellow        #d8a657;
+@define-color blue          #7daea3;
+@define-color magenta       #d3869b;
+@define-color cyan          #89b482;
+@define-color white         #d4be98;
+@define-color aqua          #689d6a;
+@define-color orange        #d65d0e;
+
+* {
+    border: none;
+    font-family: "Fira Code Nerd Font";
+    font-size: 14px;
+}
+
+window#waybar {
+    color: @foreground;
+    background-color: @background;
+}
+
+tooltip {
+    background-color: @background;
+    border: 2px solid @yellow;
+    border-radius: 8px;
+}
+
+tooltip label {
+    color: @foreground;
+}
+
+.module {
+    padding: 0 10px;
+    border-bottom: 2px solid transparent;
+}
+
+.module:first-child {
+    padding-left: 0;
+}
+
+.module:hover {
+    border-bottom: 2px solid @white;
+}
+
+.module.warning,
+#network.disconnected,
+#wireplumber.muted,
+#workspaces button.urgent {
+    border-bottom: 2px solid @yellow;
+}
+
+.module.critical {
+    border-bottom: 2px solid @red;
+}
+
+/* TODO: grayscale icons, https://github.com/Alexays/Waybar/issues/3194 */
+#tray {}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: @yellow;
+}
+
+#workspaces button {
+    color: @foreground;
+    padding: 0 5px 0 2px;
+}
+
+#workspaces button.focused,
+#workspaces button.focused * {
+    color: @background;
+    background-color: @foreground;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+#workspaces button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+}

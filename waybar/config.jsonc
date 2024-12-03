@@ -1,0 +1,134 @@
+{
+    "layer": "top",
+    "modules-left": [
+        "niri/workspaces", "niri/language", "wireplumber",
+        "custom/docker", "custom/github", "custom/gitlab",
+        "network",
+    ],
+    "modules-center": ["clock"],
+    "modules-right": [
+        "cpu", "temperature#cputemp", "memory", "custom/gpu", "battery#mousebat", "tray",
+    ],
+
+    "tray": {
+        "spacing": 10,
+    },
+
+    "cpu": {
+        "interval": 1,
+        "format": "  {usage}%",
+        "states": {
+            "warning": 70,
+            "critical": 90,
+        },
+    },
+
+    "memory": {
+        "interval": 1,
+        "format": "  {percentage}%",
+        "tooltip-format": "Used\t{used:>4.1f}GiB\nAvail\t{avail:>4.1f}GiB\nTotal\t{total:>4.1f}GiB",
+        "states": {
+            "warning": 70,
+            "critical": 90,
+        },
+    },
+
+    "custom/gpu": {
+        "exec": "$HOME/.cargo/bin/gpu-usage-waybar",
+        "format": "<big>󰾲</big>  {}",
+        "return-type": "json",
+        "on-click": "alacritty nvtop",
+    },
+
+    "temperature#cputemp": {
+        "interval": 1,
+        "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon4/temp1_input",
+        "format": "{icon} {temperatureC}°C",
+        "format-icons": ["", "", "", "", ""],
+        "warning-threshold": 70,
+        "critical-threshold": 90,
+        "tooltip": false,
+    },
+
+    "battery#mousebat": {
+        "interval": 5,
+        "bat": "hidpp_battery_0",
+        "format": "󰍽 {capacity}%",
+        "states": {
+            "warning": 20,
+            "critical": 5,
+        },
+    },
+
+    "clock": {
+        "format": "  {:%R %a, %d/%m}",
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months":   "<span color='#ffead3'><b>{}</b></span>",
+                "days":     "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":    "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today":    "<span color='#ff6699'><b><u>{}</u></b></span>"
+            },
+        },
+    },
+
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "browser": "",
+            "neovim": "",
+            "chat": "",
+            "default": "",
+        },
+    },
+
+    "niri/language": {
+        "format": "  {short}",
+    },
+
+    "wireplumber": {
+        "format": "{icon}  {volume}%",
+        "format-muted": "󰝟",
+        "on-click": "helvum",
+        "format-icons": ["", "", ""],
+        "scroll-step": 5,
+    },
+
+    "custom/docker": {
+        "exec": "docker info --format '{{json .ContainersRunning}}'",
+        "format": "  {}",
+        "interval": 1,
+        "tooltip": false,
+    },
+
+    "custom/github": {
+        "exec": "$HOME/.config/waybar/github.sh",
+        "on-click": "xdg-open https://github.com/notifications",
+        "format": "  {}",
+        "interval": 30,
+        "tooltip": false,
+    },
+
+    "custom/gitlab": {
+        "exec": "$HOME/.config/waybar/gitlab.sh",
+        "on-click": "xdg-open https://gitlab.advsys.work/dashboard/todos",
+        "format": "  {}",
+        "interval": 30,
+        "tooltip": false,
+    },
+
+    "network": {
+        "interval": 1,
+        "format-wifi": "  {essid}",
+        "format-ethernet": "󰈀  󰇚{bandwidthDownBytes} 󰕒{bandwidthUpBytes}",
+        "format-linked": "LINKED", // TODO
+        "format-disconnected": "󰈂 ",
+        "tooltip-format": "iface\t{ifname}\nip\t{ipaddr}\ngateway\t{gwaddr}",
+    },
+}
