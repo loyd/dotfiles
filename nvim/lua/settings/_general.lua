@@ -190,6 +190,7 @@ augroup("FileTypeSpecific", function(autocmd)
     filetype("*.toml.j2", "toml")
     filetype("*.ini.j2", "toml")
     filetype("*.sh.j2", "bash")
+    filetype("*.kdl", "kdl") -- TODO: why not automatically?
     filetype({ "*.yml.j2", "*.yaml.j2" }, "yaml")
 end)
 
