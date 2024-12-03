@@ -129,7 +129,7 @@ nmap(
     partial(fzf.files, {
         prompt = "Projects> ",
         cmd = "fd --exact-depth 2 -t d",
-        cwd = "~/workspace",
+        cwd = "~/code",
         previewer = "custom:project",
         header = false,
     }),
