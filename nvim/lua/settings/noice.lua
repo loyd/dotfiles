@@ -27,6 +27,15 @@ require("noice").setup({
             },
             opts = { skip = true },
         },
+        -- WA for https://github.com/rust-lang/rust-analyzer/issues/17289
+        {
+            filter = {
+                event = "notify",
+                error = true,
+                find = "-32%d+: ",
+            },
+            opts = { skip = true },
+        },
     },
 })
 
