@@ -90,7 +90,8 @@ vim.opt.listchars:append({ trail = "·" })
 -- TODO: enable in comments.
 vim.opt.spell = false -- overrided by ft below
 vim.opt.spellfile = "~/.config/nvim/spell/custom.utf-8.add"
-vim.opt.spelllang = { "en", "ru" }
+--vim.opt.spelllang = { "en", "ru" }
+vim.opt.spelllang = { "en" }
 
 ----------------------------------------
 --              Scrolling
