@@ -1,0 +1,18 @@
+# vim ft=ini
+
+layer=top
+background-color=#282828
+border-size=3
+border-color=#d8a657
+border-radius=8
+default-timeout=5000
+font=Cantarell 12
+
+[urgency=high]
+layer=overlay
+border-color=#ea6962
+
+[desktop-entry="org.telegram.desktop"]
+border-color=#7daea3
+
+# TODO: modes (do-not-disturb)
