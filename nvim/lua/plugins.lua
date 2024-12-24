@@ -22,7 +22,7 @@ use({ "folke/noice.nvim", requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-no
 ---- Text
 use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 use("ciaranm/detectindent")
-use("terryma/vim-multiple-cursors")
+use("mg979/vim-visual-multi")
 use("LunarWatcher/auto-pairs")
 use("machakann/vim-highlightedyank")
 use("rrethy/vim-illuminate")
