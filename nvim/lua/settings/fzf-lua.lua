@@ -118,11 +118,10 @@ nmap("<leader>la", fzf.lsp_code_actions, "List code actions for the item under t
 nmap("<leader>ls", fzf.lsp_document_symbols, "List symbols for the current buffer")
 nmap("<leader>lS", fzf.lsp_workspace_symbols, "List symbols for the current project")
 
-local opts = { jump_to_single_result = true }
-nmap("<leader>lt", partial(fzf.lsp_typedefs, opts), "List type definitions for the symbol under the cursor")
-nmap("<leader>ld", partial(fzf.lsp_definitions, opts), "List definitions for the symbol under the cursor")
-nmap("<leader>lr", partial(fzf.lsp_references, opts), "List references for the symbol under the cursor")
-nmap("<leader>li", partial(fzf.lsp_implementations, opts), "List implementations for the symbol under the cursor")
+nmap("<leader>lt", fzf.lsp_typedefs, "List type definitions for the symbol under the cursor")
+nmap("<leader>ld", fzf.lsp_definitions, "List definitions for the symbol under the cursor")
+nmap("<leader>lr", fzf.lsp_references, "List references for the symbol under the cursor")
+nmap("<leader>li", fzf.lsp_implementations, "List implementations for the symbol under the cursor")
 
 nmap(
     "<leader>P",
