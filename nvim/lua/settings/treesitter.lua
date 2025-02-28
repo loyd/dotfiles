@@ -11,6 +11,7 @@ require("nvim-treesitter.configs").setup({
         "yaml",
         "kdl",
         "html",
+        "xml",
         "markdown",
         "markdown_inline",
         "sql",
