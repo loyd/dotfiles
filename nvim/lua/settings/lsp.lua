@@ -1,11 +1,19 @@
 local nmap = require("helpers.map").nmap
+local augroup = require("helpers.augroup")
 local symbols = require("settings._symbols")
 
 local null_ls = require("null-ls")
 null_ls.setup({
     sources = {
+        -- Lua
         null_ls.builtins.diagnostics.selene,
         null_ls.builtins.formatting.stylua,
+
+        -- Python
+        null_ls.builtins.diagnostics.pylint,
+        null_ls.builtins.formatting.isort,
+        null_ls.builtins.formatting.black,
+        -- TODO: replace with ruff
     },
 })
 
@@ -42,10 +50,17 @@ nmap("D", vim.diagnostic.open_float, "Preview the diagnostic under the cursor")
 
 ---- Formatting on save
 
--- Lua
--- TODO: spread on other files
-vim.cmd([[autocmd BufWritePre *.lua lua vim.lsp.buf.format({ async = false })]])
-
 -- Rust (actually, it's used by polyglot, not LSP)
 vim.g.rustfmt_command = "rustfmt +nightly"
 vim.g.rustfmt_autosave = 1
+
+augroup("LspFormatting", function(autocmd)
+    local function filetype(pattern)
+        autocmd("BufWritePre", { pattern = pattern }, function()
+            vim.lsp.buf.format({ async = false })
+        end)
+    end
+
+    filetype("*.lua")
+    filetype("*.py")
+end)
