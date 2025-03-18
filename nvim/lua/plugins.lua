@@ -43,7 +43,7 @@ use("hrsh7th/cmp-buffer")
 use("hrsh7th/cmp-cmdline")
 use("editorconfig/editorconfig-vim")
 use("sindrets/diffview.nvim")
-use("jose-elias-alvarez/null-ls.nvim")
+use("nvimtools/none-ls.nvim")
 use("github/copilot.vim")
 
 ---- Languages
