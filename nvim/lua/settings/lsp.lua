@@ -11,6 +11,7 @@ null_ls.setup({
 
         -- Python
         null_ls.builtins.diagnostics.pylint,
+        null_ls.builtins.diagnostics.mypy,
         null_ls.builtins.formatting.isort,
         null_ls.builtins.formatting.black,
         -- TODO: replace with ruff
