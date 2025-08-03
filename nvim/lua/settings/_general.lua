@@ -29,6 +29,9 @@ vim.opt.shortmess:append({
     c = true, -- ins-completion-menu
 })
 
+-- Use the system clipboard by default.
+vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
+
 vim.g.tex_flavor = "latex"
 
 nmap("Q", "<Nop>", "Nothing (disabled Ex mode)")
