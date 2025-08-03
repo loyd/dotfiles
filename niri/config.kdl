@@ -1,6 +1,7 @@
 environment {
     DISPLAY ":0" // xwayland-satellite
     QT_QPA_PLATFORM "wayland"
+    ELECTRON_OZONE_PLATFORM_HINT "wayland"
     SSH_AUTH_SOCK "/run/user/1000/ssh-agent.socket" // TODO: $XDG_RUNTIME_DIR
     SCCACHE_CACHE_SIZE "50G"
 }
