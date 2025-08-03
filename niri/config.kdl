@@ -21,7 +21,12 @@ input {
             // win: meta key
             // caps: ctrl
             // lctrl: meta key (TODO: something more useful?)
-            options "grp:rctrl_toggle,compose:ralt,altwin:meta_win,ctrl:nocaps,ctrl:lctrl_meta"
+
+            // Mistel MD770
+            //options "grp:rctrl_toggle,compose:ralt,altwin:meta_win,ctrl:nocaps,ctrl:lctrl_meta"
+
+            // Ergohaven HPD
+            options "grp:rctrl_toggle,compose:ralt"
         }
     }
 }
