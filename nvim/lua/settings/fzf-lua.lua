@@ -66,6 +66,9 @@ fzf.setup({
             ["ctrl-z"] = actions.toggle_hidden,
         },
     },
+    lsp = {
+        includeDeclaration = false,
+    },
     git = {
         status = {
             actions = {
