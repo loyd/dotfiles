@@ -86,6 +86,13 @@ vim.opt.linebreak = true
 vim.opt.list = true
 vim.opt.listchars:append({ trail = "·" })
 
+-- Highlight yanked text.
+augroup("YankHighlight", function(autocmd)
+    autocmd("TextYankPost", {}, function()
+        vim.highlight.on_yank({ timeout = 200 })
+    end)
+end)
+
 ----------------------------------------
 --              Spelling
 ----------------------------------------

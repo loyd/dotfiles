@@ -12,7 +12,7 @@ use("nvim-lua/plenary.nvim")
 use("nvim-lualine/lualine.nvim")
 use({ "sainnhe/gruvbox-material", as = "gruvbox-material" })
 use("nvim-tree/nvim-web-devicons")
-use({ "ibhagwan/fzf-lua" })
+use({ "ibhagwan/fzf-lua" }) -- TODO: compare with snacks.picker
 use("rmagatti/goto-preview")
 use("caenrique/swap-buffers.nvim")
 use("nvim-tree/nvim-tree.lua")
@@ -21,12 +21,11 @@ use({ "folke/noice.nvim", requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-no
 
 ---- Text
 use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-use("ciaranm/detectindent")
-use("mg979/vim-visual-multi")
-use("LunarWatcher/auto-pairs")
-use("machakann/vim-highlightedyank")
+use("ciaranm/detectindent") -- TODO: find a replacement
+use("mg979/vim-visual-multi") -- TODO: find a replacement
+use("LunarWatcher/auto-pairs") -- TODO: find a replacement
 use("rrethy/vim-illuminate")
-use("ggandor/leap.nvim")
+use("ggandor/leap.nvim") -- TODO: try folke/flash.nvim
 
 ---- Integrations
 use("lewis6991/gitsigns.nvim")
