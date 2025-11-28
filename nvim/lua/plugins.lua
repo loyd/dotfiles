@@ -21,7 +21,12 @@ use({ "folke/noice.nvim", requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-no
 
 ---- Text
 use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
-use("ciaranm/detectindent") -- TODO: find a replacement
+use({
+    "nmac427/guess-indent.nvim",
+    config = function()
+        require("guess-indent").setup({})
+    end,
+})
 use("mg979/vim-visual-multi") -- TODO: find a replacement
 use("LunarWatcher/auto-pairs") -- TODO: find a replacement
 use("rrethy/vim-illuminate")
