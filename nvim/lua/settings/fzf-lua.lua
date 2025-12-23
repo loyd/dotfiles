@@ -59,7 +59,6 @@ fzf.setup({
 
     -- Pickers
     files = {
-        prompt = "Files> ",
         cwd_prompt = false,
         formatter = "path.dirname_first",
         actions = {
@@ -84,6 +83,7 @@ fzf.setup({
         show_details = false,
     },
 })
+fzf.register_ui_select()
 
 nmap("<leader>R", fzf.resume, "Resume the last list picker")
 nmap("<leader>lk", fzf.keymaps, "List keymaps")
@@ -129,11 +129,11 @@ nmap("<leader>li", fzf.lsp_implementations, "List implementations for the symbol
 nmap(
     "<leader>P",
     partial(fzf.files, {
-        prompt = "Projects> ",
         cmd = "fd --exact-depth 2 -t d",
         cwd = "~/code",
         previewer = "custom:project",
         header = false,
+        winopts = { title = " Projects " },
     }),
     "List projects"
 )
