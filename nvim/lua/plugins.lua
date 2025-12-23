@@ -16,7 +16,7 @@ use({ "ibhagwan/fzf-lua" }) -- TODO: compare with snacks.picker
 use("rmagatti/goto-preview")
 use("caenrique/swap-buffers.nvim")
 use("nvim-tree/nvim-tree.lua")
-use({ "stevearc/dressing.nvim" })
+use("folke/snacks.nvim")
 use({ "folke/noice.nvim", requires = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" } })
 
 ---- Text

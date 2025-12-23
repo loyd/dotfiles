@@ -3,6 +3,7 @@ require("settings._general")
 require("plugins")
 
 require("settings._rooter")
+require("settings.snacks")
 require("settings.treesitter")
 require("settings.lualine")
 require("settings.fzf-lua")
