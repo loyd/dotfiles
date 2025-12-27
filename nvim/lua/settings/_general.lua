@@ -49,10 +49,15 @@ vim.opt.colorcolumn = "101" -- overrided by ft below
 vim.opt.cursorline = true
 vim.opt.synmaxcol = 900
 
+-- Default settings for floating windows.
+vim.opt.winborder = "rounded"
+--vim.opt.winblend = 5
+
 -- Avoid shifting the text each time diagnostics appear/become resolved.
 vim.opt.signcolumn = "yes"
 
 vim.g.gruvbox_material_current_word = "grey background"
+vim.g.gruvbox_material_float_style = "blend"
 
 local function toggle_background()
     if vim.opt.background:get() == "light" then

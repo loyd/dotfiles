@@ -2,6 +2,10 @@ local cmp = require("cmp")
 local lspkind = require("lspkind")
 
 cmp.setup({
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
     snippet = {
         expand = function(args)
             vim.snippet.expand(args.body)

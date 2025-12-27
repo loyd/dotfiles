@@ -10,7 +10,7 @@ use("nvim-lua/plenary.nvim")
 
 ---- Interface
 use("nvim-lualine/lualine.nvim")
-use({ "sainnhe/gruvbox-material", as = "gruvbox-material" })
+use("sainnhe/gruvbox-material") -- TODO: try f4z3r/gruvbox-material.nvim
 use("nvim-tree/nvim-web-devicons")
 use({ "ibhagwan/fzf-lua" }) -- TODO: compare with snacks.picker
 use("rmagatti/goto-preview")

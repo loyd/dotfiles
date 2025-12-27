@@ -34,7 +34,6 @@ vim.diagnostic.config({
         severity = { min = "Warn" },
     },
     float = {
-        border = "rounded",
         source = "if_many",
         header = "",
         prefix = "",
