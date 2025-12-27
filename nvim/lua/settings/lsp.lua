@@ -18,15 +18,6 @@ null_ls.setup({
     },
 })
 
--- Icons instead of letters.
-local sym = symbols.diagnostics
-local signs = { Error = sym.error, Warn = sym.warn, Info = sym.info, Hint = sym.hint }
-
-for type, icon in pairs(signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
-
 vim.diagnostic.config({
     severity_sort = true,
     virtual_text = false,
@@ -37,6 +28,15 @@ vim.diagnostic.config({
         source = "if_many",
         header = "",
         prefix = "",
+    },
+    signs = {
+        -- Icons instead of letters.
+        text = {
+            [vim.diagnostic.severity.ERROR] = symbols.diagnostics.error,
+            [vim.diagnostic.severity.WARN] = symbols.diagnostics.warn,
+            [vim.diagnostic.severity.INFO] = symbols.diagnostics.info,
+            [vim.diagnostic.severity.HINT] = symbols.diagnostics.hint,
+        },
     },
 })
 

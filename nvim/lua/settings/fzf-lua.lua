@@ -89,7 +89,7 @@ nmap("<leader>R", fzf.resume, "Resume the last list picker")
 nmap("<leader>lk", fzf.keymaps, "List keymaps")
 
 nmap("<leader>f", fzf.files, "List files")
-nmap("<leader>/", fzf.live_grep_glob, "List lines filtered by live grep")
+nmap("<leader>/", fzf.live_grep, "List lines filtered by live grep")
 nmap("<leader>*", fzf.grep_cword, "List lines filtered by the word under the cursor")
 vmap("<leader>*", fzf.grep_visual, "List lines filtered by the selection")
 
