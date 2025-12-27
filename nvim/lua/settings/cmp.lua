@@ -25,9 +25,11 @@ cmp.setup({
         { name = "crates" },
     }),
     formatting = {
+        fields = { "kind", "abbr" },
         format = lspkind.cmp_format({
             mode = "symbol",
             maxwidth = 50,
+            ellipsis_char = "...",
             show_labelDetails = true,
         }),
     },
