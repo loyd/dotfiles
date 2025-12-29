@@ -1,4 +1,4 @@
-# vim ft=ini
+# vim: ft=toml
 
 layer=top
 background-color=#282828

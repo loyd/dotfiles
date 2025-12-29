@@ -89,11 +89,7 @@ binds {
     Mod+T { spawn "alacritty"; }
     Mod+D { spawn "fuzzel"; }
     Mod+B { spawn "~/.config/fuzzel/powermenu.sh"; } // TODO: better place?
-    Super+Alt+L { spawn "swaylock"; }
-
-    // You can also use a shell. Do this if you need pipes, multiple commands, etc.
-    // Note: the entire command goes as a single argument in the end.
-    // Mod+T { spawn "bash" "-c" "notify-send hello && exec alacritty"; }
+    Super+Alt+L { spawn "loginctl" "lock-session"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
