@@ -18,6 +18,15 @@ null_ls.setup({
     },
 })
 
+-- Markdown
+vim.lsp.config("rumdl", {
+    cmd = { "rumdl", "server" },
+    filetypes = { "markdown" },
+    root_markers = { ".git" },
+})
+vim.lsp.enable("rumdl")
+
+-- Diagnostics style
 vim.diagnostic.config({
     severity_sort = true,
     virtual_text = false,
