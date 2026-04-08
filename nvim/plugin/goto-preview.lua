@@ -1,3 +1,5 @@
+vim.pack.add({ "https://github.com/rmagatti/goto-preview" })
+
 local goto_preview = require("goto-preview")
 local nmap = require("helpers.map").nmap
 

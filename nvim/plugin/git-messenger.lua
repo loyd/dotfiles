@@ -1,3 +1,5 @@
+vim.pack.add({ "https://github.com/lsig/messenger.nvim" })
+
 local nmap = require("helpers.map").nmap
 
 require("messenger").setup({ border = "single" })

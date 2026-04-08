@@ -1,3 +1,5 @@
+vim.pack.add({ "https://github.com/lewis6991/gitsigns.nvim" })
+
 local gitsigns = require("gitsigns")
 local map = require("helpers.map").map
 local nmap = require("helpers.map").nmap

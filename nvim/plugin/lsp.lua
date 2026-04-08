@@ -1,6 +1,11 @@
+vim.pack.add({
+    "https://github.com/nvim-lua/plenary.nvim",
+    "https://github.com/nvimtools/none-ls.nvim",
+})
+
 local nmap = require("helpers.map").nmap
 local augroup = require("helpers.augroup")
-local symbols = require("settings._symbols")
+local symbols = require("helpers.symbols")
 
 local null_ls = require("null-ls")
 null_ls.setup({

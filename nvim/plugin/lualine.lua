@@ -1,5 +1,10 @@
+vim.pack.add({
+    "https://github.com/nvim-tree/nvim-web-devicons",
+    "https://github.com/nvim-lualine/lualine.nvim",
+})
+
 local lualine = require("lualine")
-local symbols = require("settings._symbols")
+local symbols = require("helpers.symbols")
 local extract_project_name = require("helpers.project").extract_project_name
 
 local C = {

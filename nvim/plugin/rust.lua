@@ -1,7 +1,14 @@
+vim.pack.add({
+    { src = "https://github.com/mrcjkb/rustaceanvim", version = vim.version.range("^9") },
+    { src = "https://github.com/saecki/crates.nvim", version = "stable" },
+})
+
+-- TODO: neotest integration?
+
 local nmap = require("helpers.map").nmap
 local vmap = require("helpers.map").vmap
 
--- TODO: neotest integration?
+---- Rust Analyzer
 
 local ra_settings = {
     cargo = {
@@ -39,3 +46,19 @@ nmap("<leader>ro", ":RustLsp openDocs<CR>", "Open docs.rs for the symbol under t
 nmap("<leader>rp", ":RustLsp parentModule<CR>", "Jump to the parent Rust module")
 nmap("<leader>rj", ":RustLsp joinLines<CR>", "Join lines starting from the current one")
 vmap("<leader>rj", ":RustLsp joinLines<CR>", "Join selected lines")
+
+---- Info about dependencies
+
+require("crates").setup({
+    null_ls = {
+        enabled = true,
+        name = "crates.nvim",
+    },
+})
+
+---- Formatting on save
+
+-- It's used by polyglot, not LSP
+-- TODO: redefine toolchain for `LspFormatting` (lsp.lua)
+vim.g.rustfmt_command = "rustfmt +nightly"
+vim.g.rustfmt_autosave = 1

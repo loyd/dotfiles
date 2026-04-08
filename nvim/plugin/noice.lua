@@ -1,3 +1,11 @@
+vim.pack.add({
+    "https://github.com/MunifTanjim/nui.nvim",
+    "https://github.com/rcarriga/nvim-notify",
+    "https://github.com/folke/noice.nvim",
+})
+
+-- TODO: replace noice with snacks + tiny-cmdline?
+
 local nmap = require("helpers.map").nmap
 
 -- NOTE: `vim.opt.shortmess` affects these patterns.

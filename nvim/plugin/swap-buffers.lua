@@ -1,3 +1,5 @@
+vim.pack.add({ "https://github.com/caenrique/swap-buffers.nvim" })
+
 local sb = require("swap-buffers")
 local nmap = require("helpers.map").nmap
 local partial = require("helpers.func").partial

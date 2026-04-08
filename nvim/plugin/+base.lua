@@ -3,7 +3,6 @@ local vmap = require("helpers.map").vmap
 local imap = require("helpers.map").imap
 local cmap = require("helpers.map").cmap
 local augroup = require("helpers.augroup")
-local extract_project_name = require("helpers.project").extract_project_name
 
 ----------------------------------------
 --               General
@@ -55,24 +54,6 @@ vim.opt.winborder = "rounded"
 
 -- Avoid shifting the text each time diagnostics appear/become resolved.
 vim.opt.signcolumn = "yes"
-
-vim.g.gruvbox_material_current_word = "grey background"
-vim.g.gruvbox_material_float_style = "blend"
-
-local function toggle_background()
-    if vim.opt.background:get() == "light" then
-        vim.opt.background = "dark"
-    else
-        vim.opt.background = "light"
-    end
-
-    vim.cmd.colorscheme("gruvbox-material")
-end
-
-vim.opt.background = "light"
-toggle_background() -- immediately switch to dark
-
-vim.api.nvim_create_user_command("ToggleBackground", toggle_background, {})
 
 ----------------------------------------
 --                 Text
@@ -208,28 +189,4 @@ augroup("FileTypeSpecific", function(autocmd)
     filetype("*.sh.j2", "bash")
     filetype("*.kdl", "kdl") -- TODO: why not automatically?
     filetype({ "*.yml.j2", "*.yaml.j2" }, "yaml")
-end)
-
-----------------------------------------
---            Tab Names
-----------------------------------------
-
--- Set a tab's name to a project's name of an active buffer.
-augroup("ProjectTabname", function(autocmd)
-    autocmd({ "BufWinEnter", "BufEnter", "WinEnter" }, {}, function()
-        -- TODO: check all buffers in the window. How is `nvim_list_bufs` expensive?
-        for _, tab in ipairs(vim.api.nvim_list_tabpages()) do
-            local winnr = vim.api.nvim_tabpage_get_win(tab)
-            local bufnr = vim.api.nvim_win_get_buf(winnr)
-            local project = extract_project_name(bufnr)
-
-            if project then
-                vim.api.nvim_tabpage_set_var(tab, "tabname", project)
-            else
-                pcall(function()
-                    vim.api.nvim_tabpage_del_var(tab, "tabname")
-                end)
-            end
-        end
-    end)
 end)

@@ -1,3 +1,12 @@
+vim.pack.add({
+    "https://github.com/hrsh7th/nvim-cmp",
+    "https://github.com/onsails/lspkind.nvim",
+    "https://github.com/hrsh7th/cmp-nvim-lsp",
+    "https://github.com/hrsh7th/cmp-path",
+    "https://github.com/hrsh7th/cmp-buffer",
+    "https://github.com/hrsh7th/cmp-cmdline",
+})
+
 local cmp = require("cmp")
 local lspkind = require("lspkind")
 
@@ -25,7 +34,7 @@ cmp.setup({
         { name = "crates" },
     }),
     formatting = {
-        fields = { "kind", "abbr" },
+        fields = { "icon", "abbr" },
         format = lspkind.cmp_format({
             mode = "symbol",
             maxwidth = 50,

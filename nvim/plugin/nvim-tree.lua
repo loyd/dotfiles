@@ -1,5 +1,10 @@
+vim.pack.add({
+    "https://github.com/nvim-tree/nvim-web-devicons",
+    "https://github.com/nvim-tree/nvim-tree.lua",
+})
+
 local nmap = require("helpers.map").nmap
-local symbols = require("settings._symbols")
+local symbols = require("helpers.symbols")
 
 -- TODO: diagnostics disappear when switching between tabs.
 -- TODO: start on the first file after startup.

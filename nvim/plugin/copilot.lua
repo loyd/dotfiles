@@ -1,3 +1,5 @@
+vim.pack.add({ "https://github.com/github/copilot.vim" })
+
 local imap = require("helpers.map").imap
 
 vim.g.copilot_no_tab_map = true

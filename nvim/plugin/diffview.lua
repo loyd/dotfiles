@@ -1,3 +1,8 @@
+vim.pack.add({
+    "https://github.com/nvim-tree/nvim-web-devicons",
+    "https://github.com/dlyongemallo/diffview.nvim",
+})
+
 local nmap = require("helpers.map").nmap
 local augroup = require("helpers.augroup")
 local default_branch = require("helpers.git").default_branch
