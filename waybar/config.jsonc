@@ -22,6 +22,7 @@
             "warning": 70,
             "critical": 90,
         },
+        "on-click": "alacritty -e htop",
     },
 
     "memory": {
@@ -32,13 +33,14 @@
             "warning": 70,
             "critical": 90,
         },
+        "on-click": "alacritty -e htop -s PERCENT_MEM",
     },
 
     "custom/gpu": {
         "exec": "$HOME/.cargo/bin/gpu-usage-waybar",
         "format": "<big>󰾲</big>  {}",
         "return-type": "json",
-        "on-click": "alacritty nvtop",
+        "on-click": "alacritty -e nvtop",
     },
 
     "temperature#cputemp": {
@@ -77,6 +79,7 @@
                 "today":    "<span color='#ff6699'><b><u>{}</u></b></span>"
             },
         },
+        "on-click": "xdg-open https://calendar.google.com/",
     },
 
     "niri/workspaces": {
@@ -96,9 +99,9 @@
     "wireplumber": {
         "format": "{icon}  {volume}%",
         "format-muted": "󰝟",
-        "on-click": "helvum", // TODO
         "format-icons": ["", "", ""],
         "scroll-step": 5,
+        "on-click": "pwvucontrol",
     },
 
     "custom/docker": {
@@ -106,16 +109,17 @@
         "format": "  {}",
         "interval": 1,
         "tooltip": false,
+        "on-click": "alacritty -e lazydocker",
     },
 
     "custom/github": {
         "exec": "$HOME/.config/waybar/github.sh",
-        "on-click": "xdg-open https://github.com/notifications",
         "format": "  {}",
         "interval": 30,
         "tooltip": false,
-        "signal": 1,
+        "on-click": "xdg-open https://github.com/notifications",
         "on-click-right": "pkill -RTMIN+1 waybar",
+        "signal": 1,
     },
 
     "custom/codex": {
@@ -124,8 +128,9 @@
         "interval": 30,
         "format": "{}",
         "tooltip": true,
-        "signal": 2,
+        "on-click": "xdg-open https://chatgpt.com/codex/cloud/settings/usage",
         "on-click-right": "pkill -RTMIN+2 waybar",
+        "signal": 2,
     },
 
     "custom/copilot": {
@@ -134,8 +139,9 @@
         "interval": 30,
         "format": "{}",
         "tooltip": true,
-        "signal": 3,
+        "on-click": "xdg-open https://github.com/settings/billing/usage",
         "on-click-right": "pkill -RTMIN+3 waybar",
+        "signal": 3,
     },
 
     "network": {
