@@ -48,7 +48,8 @@ tooltip label {
 .module.warning,
 #network.disconnected,
 #wireplumber.muted,
-#workspaces button.urgent {
+#workspaces button.urgent,
+.codex-high, .copilot-high, .zen-high {
     border-bottom: 2px solid @yellow;
 }
 

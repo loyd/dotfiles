@@ -2,7 +2,8 @@
     "layer": "top",
     "modules-left": [
         "niri/workspaces", "niri/language", "wireplumber",
-        "custom/docker", "custom/github", "custom/gitlab",
+        "custom/docker", "custom/github",
+        "custom/codex", "custom/copilot",
         "network",
     ],
     "modules-center": ["clock"],
@@ -95,7 +96,7 @@
     "wireplumber": {
         "format": "{icon}  {volume}%",
         "format-muted": "󰝟",
-        "on-click": "helvum",
+        "on-click": "helvum", // TODO
         "format-icons": ["", "", ""],
         "scroll-step": 5,
     },
@@ -113,14 +114,28 @@
         "format": "  {}",
         "interval": 30,
         "tooltip": false,
+        "signal": 1,
+        "on-click-right": "pkill -RTMIN+1 waybar",
     },
 
-    "custom/gitlab": {
-        "exec": "$HOME/.config/waybar/gitlab.sh",
-        "on-click": "xdg-open https://gitlab.advsys.work/dashboard/todos",
-        "format": "  {}",
+    "custom/codex": {
+        "exec": "codex-usage --waybar --format '{icon_plain} {pct}%'",
+        "return-type": "json",
         "interval": 30,
-        "tooltip": false,
+        "format": "{}",
+        "tooltip": true,
+        "signal": 2,
+        "on-click-right": "pkill -RTMIN+2 waybar",
+    },
+
+    "custom/copilot": {
+        "exec": "copilot-usage --waybar --format '{icon_plain} {pct}%'",
+        "return-type": "json",
+        "interval": 30,
+        "format": "{}",
+        "tooltip": true,
+        "signal": 3,
+        "on-click-right": "pkill -RTMIN+3 waybar",
     },
 
     "network": {
