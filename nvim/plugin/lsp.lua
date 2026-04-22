@@ -64,10 +64,6 @@ nmap("D", vim.diagnostic.open_float, "Preview the diagnostic under the cursor")
 
 ---- Formatting on save
 
--- Rust (actually, it's used by polyglot, not LSP)
-vim.g.rustfmt_command = "rustfmt +nightly"
-vim.g.rustfmt_autosave = 1
-
 augroup("LspFormatting", function(autocmd)
     local function filetype(pattern)
         autocmd("BufWritePre", { pattern = pattern }, function()
@@ -77,4 +73,5 @@ augroup("LspFormatting", function(autocmd)
 
     filetype("*.lua")
     filetype("*.py")
+    filetype("*.rs")
 end)
