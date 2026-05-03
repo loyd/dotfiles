@@ -1,0 +1,18 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Use-Tusk/fence/main/docs/schema/fence.schema.json",
+  "extends": "code",
+  "network": {
+    "allowedDomains": [
+      "chatgpt.com",
+      "doc.rust-lang.org",
+      "std.rs",
+      "docs.rs",
+      "neovim.io"
+    ]
+  },
+  "filesystem": {
+    "allowRead": [
+      "/home/code"
+    ]
+  },
+}

@@ -10,3 +10,4 @@ ln -s $CFG/waybar ~/.config
 ln -s $CFG/fuzzel ~/.config
 ln -s $CFG/mako ~/.config
 ln -s $CFG/hypr ~/.config
+ln -s $CFG/fence ~/.config
