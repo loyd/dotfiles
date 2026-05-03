@@ -2,6 +2,8 @@
 
 CFG=/home/code/fave/dotfiles
 
+ln -s $CFG/.zshrc ~/.zshrc
+
 ln -s $CFG/nvim ~/.config
 ln -s $CFG/alacritty ~/.config
 ln -s $CFG/kitty ~/.config
