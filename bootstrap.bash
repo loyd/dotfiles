@@ -3,6 +3,8 @@
 CFG=/home/code/fave/dotfiles
 
 ln -s $CFG/.zshrc ~/.zshrc
+mkdir -p ~/.config/oh-my-zsh
+ln -s $CFG/oh-my-zsh/themes ~/.config/oh-my-zsh
 
 ln -s $CFG/nvim ~/.config
 ln -s $CFG/alacritty ~/.config
