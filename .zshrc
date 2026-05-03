@@ -52,7 +52,7 @@ alias gdm='gd $(git_main_branch)'
 alias ssh='TERM=xterm-256color ssh'
 
 OPENCODE_ALLOW_ALL='{"permission":{"*":"allow"}}'
-alias oc="env OPENCODE_CONFIG_CONTENT='$OPENCODE_ALLOW_ALL' fence -- opencode"
+alias oc="env OPENCODE_CONFIG_CONTENT='$OPENCODE_ALLOW_ALL' fence -p 4000 -- opencode --port 4000"
 
 # Worktrunk integration
 

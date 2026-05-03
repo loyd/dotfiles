@@ -4,7 +4,18 @@ local oc = require("opencode")
 local map = require("helpers.map").map
 local partial = require("helpers.func").partial
 
-vim.g.opencode_opts = {}
+vim.g.opencode_opts = {
+    -- Don't start the server, only use existing external one.
+    server = {
+        -- opencode.nvim cannot find instances inside the `fence` sandbox because
+        -- it uses the "opencode.*--port" pattern to find them, but the port is exposed by `socat`
+        -- TODO: find a better way to discover the port dynamically for sandboxed instances.
+        port = 4000,
+        start = function() end,
+        stop = function() end,
+        toggle = function() end,
+    },
+}
 
 -- Required for `opts.events.reload`.
 vim.o.autoread = true
@@ -13,8 +24,3 @@ vim.o.autoread = true
 map({ "n", "x" }, "<leader>oo", partial(oc.ask, "@this: ", { submit = true }), "Ask opencode")
 map({ "n", "x" }, "<leader>oa", oc.select, "Execute opencode action")
 map({ "n", "x" }, "<leader>om", partial(oc.prompt, "@this"), "Add to opencode")
-map({ "n", "t" }, "<leader>to", oc.toggle, "Toggle opencode")
-
--- TODO
---nmap("<S-C-u>", partial(oc.command, "session.half.page.up"), "Opencode half page up")
---nmap("<S-C-d>", partial(oc.command, "session.half.page.down"), "Opencode half page down")
