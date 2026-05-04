@@ -6,7 +6,7 @@ local function get_location()
     -- Find the first location outside this file.
     for level = 3, 6 do
         local caller = debug.getinfo(level, "Sl")
-        local source = caller.source:match("^.*/lua/(.+)$") or caller.source
+        local source = caller.source:match("^.*/nvim/(.+)$") or caller.source
 
         if caller.currentline > 0 and not source:match("helpers/map.lua$") then
             return source .. ":" .. caller.currentline
