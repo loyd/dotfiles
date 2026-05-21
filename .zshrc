@@ -27,6 +27,7 @@ export PATH="$HOME/bin:$HOME/.cargo/bin:$PATH"
 export EDITOR=nvim
 export BROWSER=brave
 export GIT_EXTERNAL_DIFF=difft
+export INSTA_DIFF_TOOL='difft --override *.snap:yaml --color always'
 
 ## Settings
 
