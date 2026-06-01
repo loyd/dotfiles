@@ -14,6 +14,10 @@ null_ls.setup({
         null_ls.builtins.diagnostics.selene,
         null_ls.builtins.formatting.stylua,
 
+        -- YAML
+        null_ls.builtins.diagnostics.yamllint,
+        null_ls.builtins.diagnostics.ansiblelint,
+
         -- Python
         null_ls.builtins.diagnostics.pylint,
         null_ls.builtins.diagnostics.mypy,
