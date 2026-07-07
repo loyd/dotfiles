@@ -189,4 +189,5 @@ augroup("FileTypeSpecific", function(autocmd)
     filetype("*.sh.j2", "bash")
     filetype("*.kdl", "kdl") -- TODO: why not automatically?
     filetype({ "*.yml.j2", "*.yaml.j2" }, "yaml")
+    filetype({ "*.snap", "*.snap.new" }, "yaml")
 end)
