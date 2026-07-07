@@ -2,6 +2,7 @@ vim.pack.add({ "https://github.com/sainnhe/gruvbox-material" })
 
 vim.g.gruvbox_material_current_word = "grey background"
 vim.g.gruvbox_material_float_style = "blend"
+vim.g.gruvbox_material_disable_italic_comment = 1
 
 local function toggle_background()
     if vim.opt.background:get() == "light" then
